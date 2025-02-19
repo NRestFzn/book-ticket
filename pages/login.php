@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
             }) 
             .then(response => response.json()) 
             .then(data => { 
-                if (data.status === 'success') { 
+                if (data.status === 'ok') { 
                     window.location.replace(data.redirectUrl);
                     alert(data.message)
                 } else { 
