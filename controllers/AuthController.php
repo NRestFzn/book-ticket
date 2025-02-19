@@ -34,7 +34,7 @@ class AuthController {
     }
 
     public function login($email, $password) {
-        $findUser = mysqli_fetch_assoc(query("SELECT username, email, password FROM users where email = '$email'"));
+        $findUser = mysqli_fetch_assoc(query("SELECT * FROM users where email = '$email'"));
 
         if(!$findUser) {
             echo json_encode(["message" => "Account not found"]);
