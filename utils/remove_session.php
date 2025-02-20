@@ -1,6 +1,8 @@
 <?php
     include("{$_SERVER['DOCUMENT_ROOT']}/helper/base_url.php");
 
-    header("Location: {$baseUrl}/pages/login");
+    session_start();
+    session_destroy();
+    header("Location: {$baseUrl}");
     exit();
 ?>

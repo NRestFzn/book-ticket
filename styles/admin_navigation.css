@@ -1,0 +1,27 @@
+.admin-nav {
+    background: white;
+    height: 100vh;
+    position: fixed;
+    width: 200px;
+    padding-top: 120px;
+    padding-left: 40px;
+}
+
+.admin-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-nav ul li {
+    list-style: none;
+}
+
+.admin-nav ul li a:hover {
+    color: #007bff;
+}
+
+.admin-nav ul li a {
+    text-decoration: none;
+    color: black;
+}

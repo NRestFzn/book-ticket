@@ -1,5 +1,8 @@
 <?php
-include("{$_SERVER['DOCUMENT_ROOT']}/components/navbar.php");
+  include("{$_SERVER['DOCUMENT_ROOT']}/utils/check_session.php");
+  $checkSession = new CheckSession();
+
+  $checkSession->ifNotExist();
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +15,9 @@ include("{$_SERVER['DOCUMENT_ROOT']}/components/navbar.php");
     <title>Home</title>
 </head>
 <body>
+    <?php
+        include("{$_SERVER['DOCUMENT_ROOT']}/components/navbar.php");
+    ?>
     <div class="banner">
         <img src="<?php $_SERVER['DOCUMENT_ROOT'] ?>/assets/images/banner.jpg" alt="">
     </div>

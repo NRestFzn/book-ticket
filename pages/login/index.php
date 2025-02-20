@@ -1,14 +1,4 @@
 <?php
-include("{$_SERVER['DOCUMENT_ROOT']}/helper/base_url.php");
-
-session_start();
-
-isset($_SESSION['userlogin'])
-? $_SESSION['userlogin']['role_id'] == 1
-? header("Location: {$baseUrl}/pages/admin-dashboard/user.php")
-: header("Location: {$baseUrl}/pages/home.php")
-: '';
-
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
   include("{$_SERVER['DOCUMENT_ROOT']}/controllers/AuthController.php");
   $email = $_POST['email'];
@@ -83,4 +73,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     </script>
   </body>
 </html>
-

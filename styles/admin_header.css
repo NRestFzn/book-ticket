@@ -1,0 +1,17 @@
+.admin-header {
+    height: 80px;
+    background: white;
+    box-shadow: 0 0 7px rgba(0,0,0,0.2);
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.admin-header .logo {
+    width: 60px;
+    height: 60px;
+    background: red;
+}

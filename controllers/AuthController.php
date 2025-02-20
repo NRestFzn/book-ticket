@@ -29,7 +29,7 @@ class AuthController {
 
         $_SESSION['userlogin'] = $findUser;
 
-        echo json_encode(["status" => "success", "message" => "Account successfully registered", "redirectUrl" => "{$baseUrl}/pages/home.php"]);
+        echo json_encode(["status" => "success", "message" => "Account successfully registered", "redirectUrl" => "{$baseUrl}/pages/home"]);
         exit();
     }
 
@@ -50,7 +50,13 @@ class AuthController {
 
         $_SESSION['userlogin'] = $findUser;
 
-        echo json_encode(["status" => "ok", "message" => "Login successfully", "redirectUrl" => "{$baseUrl}/pages/home.php"]);
+        $redirectUrl = "{$baseUrl}/pages/home";
+
+        if($_SESSION['userlogin']['role_id'] == 1) {
+            $redirectUrl = "{$baseUrl}/pages/admin-dashboard/user";
+        }
+
+        echo json_encode(["status" => "ok", "message" => "Login successfully", "redirectUrl" => $redirectUrl]);
         exit();
     }
 }
