@@ -31,5 +31,17 @@ $sqlCollection = [
     "addDefaultUser" => "INSERT IGNORE INTO {$DB_NAME}.users (fullname, username, email, password, role_id) values
                         ('test admin', 'test_admin', 'testadmin@mail.com', '{$defaultPassword}', 1),
                         ('test user', 'test_user', 'testuser@mail.com', '{$defaultPassword}', 2)",
+
+    "createTableMovie" => "CREATE TABLE IF NOT EXISTS {$DB_NAME}.movies (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        title VARCHAR(255) NOT NULL,
+                        description VARCHAR(255) NOT NULL,
+                        status VARCHAR(255) NOT NULL,
+                        seat_amount INT NOT NULL,
+                        remaining_seat INT NOT NULL DEFAULT 0,
+                        ticket_price DECIMAl(10, 2),
+                        poster VARCHAR(255),
+                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        updated_at TIMESTAMP)",
 ];
 ?>
