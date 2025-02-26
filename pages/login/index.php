@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
   </head>
   <body>
     <h1>Login Form</h1>
-    <form onsubmit="submitForm(event)" method="POST">
+    <form onsubmit="submitForm(event)" method="POST" class="login">
 
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" placeholder="ex: john@mail.com" required />
@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
       </div>
 
       <input type="submit" name="login" value="Login" />
-      <p><a href="<?php $_SERVER['DOCUMENT_ROOT']; ?>/pages/register.php">Don't have an account?</a></p>
+      <p><a href="<?php $_SERVER['DOCUMENT_ROOT']; ?>/pages/register">Don't have an account?</a></p>
     </form>
 
     <script>

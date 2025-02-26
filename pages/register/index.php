@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
         </div>
 
         <input type="submit" name="register" value="Register" />
-        <p><a href="/pages/login.php">Have an account?</a></p>
+        <p><a href="/pages/login">Have an account?</a></p>
     </form>
 
     <script>
