@@ -1,78 +1,82 @@
 .main-container {
-    margin-top: 120px;
-    margin-left: 240px;
-    padding: 20px 40px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  margin-top: 120px;
+  margin-left: 240px;
+  padding: 20px 40px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-  .movie-description {
-    max-height: 80px;
-    overflow-y: auto;
-    display: block;
-  }
+.movie-description {
+  max-height: 80px;
+  overflow-y: auto;
+  display: block;
+}
 
-  .select-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+.select-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  .select-option select {
-    width: 120px;
-    height: 30px;
-    padding: 5px;
-    border: none;
-    box-shadow: 0 0 7px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
-  }
+.select-option select {
+  width: 120px;
+  height: 30px;
+  padding: 5px;
+  border: none;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
 
-  .select-option input {
-    width: 200px;
-    height: 30px;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    box-shadow: 0 0 7px rgba(0,0,0,0.1);
-    padding-left: 10px;
-  }
+.select-option input {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  padding-left: 10px;
+}
 
-  .select-option select:focus {
-    color: #007bff;
-    border: 1px solid #007bff;
-  }
+.select-option select:focus {
+  color: #007bff;
+  border: 1px solid #007bff;
+}
 
-  .select-option select:hover {
-    color: #007bff;
-    border: 1px solid #007bff;
-  }
+.select-option select:hover {
+  color: #007bff;
+  border: 1px solid #007bff;
+}
 
-  .select-option .add-movie {
-    border: 1px solid #007bff;
-    color: #007bff;
-    background: none;
-  }
+.select-option .add-movie {
+  border: 1px solid #007bff;
+  color: #007bff;
+  background: none;
+}
 
-  .select-option .add-movie:hover {
-    border: none;
-    color: white;
-    background: #007bff;
-  }
+.select-option .add-movie:hover {
+  border: none;
+  color: white;
+  background: #007bff;
+}
 
-  .select-option button {
-    height: 30px;
-    width: auto;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background: #007bff;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+.select-option button {
+  height: 30px;
+  width: auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#modal-detail {
+  display: none;
+}

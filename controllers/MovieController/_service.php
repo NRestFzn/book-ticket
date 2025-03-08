@@ -36,5 +36,29 @@ class MovieServices {
         query("DELETE FROM movies WHERE id = $movie_id");
         exit();
     }
+
+    public function getById($id) {
+        $findMovie = mysqli_fetch_assoc(query("SELECT * FROM movies where id = '$id'"));
+
+        if(!$findMovie) {
+            echo json_encode(["status" => "notok", "message" => "Movie not found"]);
+            exit();
+        }
+
+        echo json_encode(['status' => 'ok', 'data' => $findMovie]);
+    }
+
+    public function updateMovie($id, $title, $description, $seat_amount, $ticket_price, $poster, $status) {
+        $this->getById($id);
+
+        query("UPDATE movies SET
+                title='$title',
+                description='$description',
+                seat_amount=$seat_amount,
+                ticket_price=$ticket_price,
+                poster='$poster',
+                status='$status'
+                WHERE id=$id");
+    }
 }
 ?>
