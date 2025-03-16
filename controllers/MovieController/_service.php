@@ -1,8 +1,10 @@
 <?php
 include("{$_SERVER['DOCUMENT_ROOT']}/config/database.php");
 
-class MovieServices {
-    public function getAllMovie() {
+class MovieServices
+{
+    public function getAllMovie()
+    {
         $query = "SELECT * FROM movies";
         $title = isset($_GET['title']) ? $_GET['title'] : '';
 
@@ -16,17 +18,19 @@ class MovieServices {
         exit();
     }
 
-    public function addMovie($title, $description, $status, $seat_amount, $ticket_price, $poster) {
+    public function addMovie($title, $description, $status, $seat_amount, $ticket_price, $poster)
+    {
         query("INSERT INTO movies (title, description, status, seat_amount, remaining_seat, ticket_price, poster)
                value ('$title', '$description', '$status', '$seat_amount', '$seat_amount', '$ticket_price', '$poster')");
 
         echo json_encode(['message' => 'Success add new movie']);
     }
 
-    public function deleteMovie($id) {
+    public function deleteMovie($id)
+    {
         $findMovie = mysqli_fetch_assoc(query("SELECT * FROM movies where id = $id"));
 
-        if(!$findMovie) {
+        if (!$findMovie) {
             echo json_encode(["message" => "Movie not found"]);
             exit();
         }
@@ -37,10 +41,11 @@ class MovieServices {
         exit();
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $findMovie = mysqli_fetch_assoc(query("SELECT * FROM movies where id = '$id'"));
 
-        if(!$findMovie) {
+        if (!$findMovie) {
             echo json_encode(["status" => "notok", "message" => "Movie not found"]);
             exit();
         }
@@ -48,8 +53,13 @@ class MovieServices {
         echo json_encode(['status' => 'ok', 'data' => $findMovie]);
     }
 
-    public function updateMovie($id, $title, $description, $seat_amount, $ticket_price, $poster, $status) {
-        $this->getById($id);
+    public function updateMovie($id, $title, $description, $seat_amount, $ticket_price, $poster, $status)
+    {
+        $findMovie = mysqli_fetch_assoc(query("SELECT * FROM movies where id = '$id'"));
+
+        $this->getById($findMovie['id']);
+
+        isset($poster) ? $poster = $poster : $poster = $findMovie['poster'];
 
         query("UPDATE movies SET
                 title='$title',
@@ -61,4 +71,3 @@ class MovieServices {
                 WHERE id=$id");
     }
 }
-?>
