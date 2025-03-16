@@ -1,0 +1,58 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.update-movie {
+  width: 990px;
+  height: 495px;
+  background: white;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+
+.update-movie .poster-preview {
+  width: 35%;
+  height: 100%;
+}
+
+.update-movie .poster-preview img {
+  width: 100%;
+  height: 100%;
+}
+
+.update-movie .update-form {
+  width: 65%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.update-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.update-form input,
+.update-form select {
+  height: 30px;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.update-form button {
+  height: 30px;
+  background: #007bff;
+  cursor: pointer;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
