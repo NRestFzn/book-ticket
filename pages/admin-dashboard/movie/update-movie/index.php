@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/styles/_global.css" />
-  <link rel="stylesheet" href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/styles/update_movie.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/pages/admin-dashboard/movie/update-movie/style.css">
+  <title>Update Movie</title>
 </head>
 
 <body>
