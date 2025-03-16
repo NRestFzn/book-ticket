@@ -1,5 +1,5 @@
 <?php
-    include("{$_SERVER['DOCUMENT_ROOT']}/helper/setup_database.php");
+    include("{$_SERVER['DOCUMENT_ROOT']}/helper/sql_collection.php");
     $env = parse_ini_file("{$_SERVER['DOCUMENT_ROOT']}/.env");
     if (!$env) {
         die("Error: Failed to load environment file.");
