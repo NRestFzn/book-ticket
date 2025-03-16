@@ -106,23 +106,9 @@ async function deleteMovie(event, id) {
 }
 
 getAllMovie();
-
-function showModal() {
-  const modal = document.getElementById("modal-container");
-  modal.style.display = "block";
-
-  const overlay = document.getElementById("overlay");
-
-  overlay.style.display = "none";
-}
-
-function hideModal() {
-  const modal = document.getElementById("modal-container");
+function hideModalMovieDetail() {
+  const modal = document.getElementById("modal-detail");
   modal.style.display = "none";
-
-  const overlay = document.getElementById("overlay");
-
-  overlay.style.display = "block";
 }
 
 function showDetail() {

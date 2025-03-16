@@ -20,9 +20,7 @@ $checkSession->ifNotAdmin();
 
 <body>
     <?php include include("{$_SERVER['DOCUMENT_ROOT']}/components/movie_detail.php"); ?>
-    <?php
-    include("{$_SERVER['DOCUMENT_ROOT']}/components/movie_modal.php");
-    ?>
+
     <?php
     include("{$_SERVER['DOCUMENT_ROOT']}/components/admin_navigation.php");
     include("{$_SERVER['DOCUMENT_ROOT']}/components/admin_header.php");
