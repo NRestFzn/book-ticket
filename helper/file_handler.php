@@ -30,7 +30,7 @@ class FileHandler
                 move_uploaded_file($_FILES["file_upload"]["tmp_name"], $targetFile);
             }
 
-            return "/uploads" . $filename;
+            return "/uploads" . "/" . $filename;
         } else {
             return null;
         }
