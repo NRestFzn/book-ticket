@@ -1,49 +1,49 @@
 function getMovieByTitle(event) {
   event.preventDefault();
 
-  let title = document.getElementById("title-input").value;
+  let title = document.getElementById('title-input').value;
 
-  getAllMovie(title, "", "");
+  getAllMovie(title, '', '');
 }
 
-async function getAllMovie(title = "", sortBy = "", status = "") {
+async function getAllMovie(title = '', sortBy = '', status = '') {
   const raw = await fetch(
     `${window.location.origin}/controllers/MovieController/get_all.php`,
-    { method: "GET" }
+    {method: 'GET'}
   );
 
-  let { data } = await raw.json();
+  let {data} = await raw.json();
 
   if (data && data.length > 0) {
     if (title) {
-      data = data.filter(movie =>
+      data = data.filter((movie) =>
         movie.title.toLowerCase().includes(title.toLowerCase())
       );
     }
 
     if (sortBy) {
       data.sort((a, b) => {
-        if (sortBy === "title") return a.title.localeCompare(b.title);
-        if (sortBy === "ticket_price") return a.ticket_price - b.ticket_price;
-        if (sortBy === "remaining_seat")
+        if (sortBy === 'title') return a.title.localeCompare(b.title);
+        if (sortBy === 'ticket_price') return a.ticket_price - b.ticket_price;
+        if (sortBy === 'remaining_seat')
           return a.remaining_seat - b.remaining_seat;
-        if (sortBy === "remaining_seat")
+        if (sortBy === 'remaining_seat')
           return a.remaining_seat - b.remaining_seat;
       });
     }
 
     if (status) {
-      data = data.filter(e => {
+      data = data.filter((e) => {
         return e.status == status;
       });
     }
 
-    const movieData = document.getElementById("movie-data");
+    const movieData = document.getElementById('movie-data');
 
     movieData.innerHTML = ``;
 
     data.map((e, index) => {
-      const tr = document.createElement("tr");
+      const tr = document.createElement('tr');
 
       tr.innerHTML = `<td>${index + 1}</td>
                       <td id="title-data">${e.title}</td>
@@ -54,7 +54,9 @@ async function getAllMovie(title = "", sortBy = "", status = "") {
                         }/pages/admin-dashboard/movie/update?movie_id=${e.id}>
                           <button class="edit">Edit</button>
                         </a>
-                        <button class="detail" onclick="showDetail()">Detail</button>
+                        <button class="detail" onclick="showDetail(${
+                          e.id
+                        })">Detail</button>
                         <button class="delete">Delete</button>
                       </td>`;
 
@@ -63,62 +65,67 @@ async function getAllMovie(title = "", sortBy = "", status = "") {
   }
 }
 
-async function addMovie(event) {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-  formData.append("add_movie", 1);
-
-  const raw = await fetch(
-    `${window.location.origin}/controllers/MovieController/add.php`,
-    {
-      method: "POST",
-      body: formData,
-    }
-  );
-
-  const data = await raw.json();
-
-  const modal = document.getElementById("modal-container");
-  modal.style.display = "none";
-
-  const overlay = document.getElementById("overlay");
-
-  overlay.style.display = "block";
-
-  alert(data.message);
-
-  getAllMovie();
-}
+getAllMovie();
 
 async function deleteMovie(event, id) {
   const formData = new FormData(event.target);
 
-  formData.append("delete_movie", id);
+  formData.append('delete_movie', id);
 
   await fetch(
     `${window.location.origin}/controllers/MovieController/delete.php`,
-    { method: "POST", body: formData }
+    {method: 'POST', body: formData}
   );
 
   window.location.replace(`${window.location.origin}`);
 
-  alert("success");
+  alert('success');
 }
 
-getAllMovie();
 function hideModalMovieDetail() {
-  const modal = document.getElementById("modal-detail");
-  modal.style.display = "none";
+  const modal = document.getElementById('modal-detail');
+  modal.style.display = 'none';
 }
 
-function showDetail() {
-  const modalDetail = document.getElementById("modal-detail");
-  modalDetail.style.display = "block";
+async function showDetail(id) {
+  const modalDetail = document.getElementById('modal-detail');
+  modalDetail.style.display = 'block';
+
+  const raw = await fetch(
+    `${window.location.origin}/controllers/MovieController/get_by_id.php?movie_id=${id}`,
+    {
+      method: 'GET',
+    }
+  );
+
+  const {status, data} = await raw.json();
+
+  if (status !== 'ok') {
+    window.location.replace(
+      `${window.location.origin}/pages/admin-dashboard/movie`
+    );
+    alert('movie not found');
+  }
+
+  const title = (document.getElementById('title').value = data.title);
+  const description = (document.getElementById('description').value =
+    data.description);
+  const seatAmount = (document.getElementById('seat_amount').value =
+    data.seat_amount);
+  const ticketPrice = (document.getElementById('ticket_price').value =
+    data.ticket_price);
+  const movieStatus = (document.getElementById('status').value = data.status);
+  const moviePoster = (document.getElementById(
+    'poster'
+  ).src = `${window.origin}${data.poster}`);
+  const remainingSeat = (document.getElementById(
+    'remaining_seat'
+  ).value = `${data.remaining_seat} / ${data.seat_amount}`);
 }
 
 window.onclick = function (event) {
-  const modalDetail = document.getElementById("modal-detail");
+  const modalDetail = document.getElementById('modal-detail');
   if (modalDetail && event.target === modalDetail) {
-    modalDetail.style.display = "none";
+    modalDetail.style.display = 'none';
   }
 };
