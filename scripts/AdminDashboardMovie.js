@@ -51,13 +51,17 @@ async function getAllMovie(title = '', sortBy = '', status = '') {
                       <td class="action">
                         <a href=${
                           window.location.origin
-                        }/pages/admin-dashboard/movie/update?movie_id=${e.id}>
+                        }/pages/admin-dashboard/movie/update-movie?movie_id=${
+        e.id
+      }>
                           <button class="edit">Edit</button>
                         </a>
                         <button class="detail" onclick="showDetail(${
                           e.id
                         })">Detail</button>
-                        <button class="delete">Delete</button>
+                        <button class="delete" onclick='deleteMovie(${
+                          e.id
+                        })'>Delete</button>
                       </td>`;
 
       movieData.appendChild(tr);
@@ -67,17 +71,15 @@ async function getAllMovie(title = '', sortBy = '', status = '') {
 
 getAllMovie();
 
-async function deleteMovie(event, id) {
-  const formData = new FormData(event.target);
-
-  formData.append('delete_movie', id);
-
+async function deleteMovie(id) {
   await fetch(
-    `${window.location.origin}/controllers/MovieController/delete.php`,
-    {method: 'POST', body: formData}
+    `${window.location.origin}/controllers/MovieController/delete.php?id=${id}`,
+    {method: 'DELETE'}
   );
 
-  window.location.replace(`${window.location.origin}`);
+  window.location.replace(
+    `${window.location.origin}/pages/admin-dashboard/movie`
+  );
 
   alert('success');
 }
