@@ -45,7 +45,9 @@ $checkSession->ifNotAdmin();
             </select>
 
             <button onclick="getAllMovie()">Reset</button>
-            <button class="add-movie" onclick="showModal()">Add movie</button>
+            <a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/pages/admin-dashboard/movie/add-movie">
+                <button class="add-movie">Add movie</button>
+            </a>
         </div>
         <table id="table">
             <tr>
